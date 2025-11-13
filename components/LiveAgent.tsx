@@ -1,9 +1,11 @@
+
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 // FIX: 'LiveSession' is not an exported member of '@google/genai'.
 import { GoogleGenAI, LiveServerMessage, Modality } from '@google/genai';
 import { decode, encode, decodeAudioData } from '../services/audioUtils';
 import { Mode } from '../types';
 import { Play, StopCircle, Mic } from './icons';
+import { withRetry } from '@/utils/apiUtils';
 
 interface LiveAgentProps {
   mode: Mode;
@@ -67,7 +69,7 @@ export const LiveAgent: React.FC<LiveAgentProps> = ({ mode }) => {
 
         const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY as string });
 
-        sessionPromiseRef.current = ai.live.connect({
+        sessionPromiseRef.current = withRetry(() => ai.live.connect({
             model: 'gemini-2.5-flash-native-audio-preview-09-2025',
             config: {
                 responseModalities: [Modality.AUDIO],
@@ -134,7 +136,7 @@ export const LiveAgent: React.FC<LiveAgentProps> = ({ mode }) => {
                     stopSession();
                 },
             },
-        });
+        }));
     } catch (err) {
         console.error("Failed to start session:", err);
         setStatus(`Error: ${(err as Error).message}`);

@@ -22,8 +22,9 @@ import { ToolSidebar } from './ToolSidebar';
 
 
 const CHAT_MODELS = [
-    { id: 'gemini-2.5-pro', name: 'Gemini 2.5 Pro', description: 'Most capable model for complex tasks.' },
     { id: 'gemini-2.5-flash', name: 'Gemini 2.5 Flash', description: 'Fast and efficient for most tasks.' },
+    { id: 'gemini-2.5-pro', name: 'Gemini 2.5 Pro', description: 'Most capable model for complex tasks.' },
+    { id: 'gemini-2.5-flash-lite', name: 'Gemini 2.5 Flash Lite', description: 'The lightest and fastest model for simple tasks.' },
 ];
 
 const EXAMPLE_PROMPTS = [

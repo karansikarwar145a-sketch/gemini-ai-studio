@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { GoogleGenAI } from "@google/genai";
 import { 
@@ -6,6 +7,7 @@ import {
     ListChecks, DraftingCompass, NotebookText, PlusCircle
 } from '../components/icons';
 import { Loader } from '../components/Loader';
+import { withRetry } from '@/utils/apiUtils';
 import './Index.css';
 
 declare var marked: any;
@@ -223,7 +225,7 @@ export const ProjectApp: React.FC = () => {
         const contents = [...historyForAPI, { role: 'user' as const, parts: [{ text: message }] }];
 
         try {
-            const stream = await aiRef.current.models.generateContentStream({ model: 'gemini-2.5-flash', contents, config: { systemInstruction } });
+            const stream = await withRetry(() => aiRef.current!.models.generateContentStream({ model: 'gemini-2.5-flash', contents, config: { systemInstruction } }));
             let modelResponse = '';
             setMessages(prev => [...prev, { role: 'model', content: '' }]);
 
@@ -259,7 +261,7 @@ export const ProjectApp: React.FC = () => {
         switch(action) {
             case 'quiz':
                 title = 'Generated Quiz';
-                promptText = `Based on the provided documents, generate a 5-question multiple-choice quiz. The questions should test understanding of the key facts and concepts. Format the output as a clean markdown list. For each question, provide the correct answer on the line immediately after the options, prefixed with '**Answer:**'.`;
+                promptText = `Based on the provided documents, generate a 5-question multiple-choice quiz. The questions should test understanding of the. The questions should test understanding of the key facts and concepts. Format the output as a clean markdown list. For each question, provide the correct answer on the line immediately after the options, prefixed with '**Answer:**'.`;
                 break;
             case 'mindmap':
                 title = 'Generated Mindmap';
@@ -279,7 +281,7 @@ export const ProjectApp: React.FC = () => {
         };
 
         try {
-            const response = await aiRef.current.models.generateContent({ model: 'gemini-2.5-flash', contents });
+            const response = await withRetry(() => aiRef.current!.models.generateContent({ model: 'gemini-2.5-flash', contents }));
             setModalContent({ title, content: response.text });
         } catch (err) {
             console.error(err);
