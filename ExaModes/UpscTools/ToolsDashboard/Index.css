@@ -1,0 +1,103 @@
+/* ExaModes/UpscTools/ToolsDashboard/Index.css */
+
+.tools-dashboard-container {
+    padding: 2rem 1.5rem;
+    animation: fade-in-up 0.5s ease-out;
+}
+
+.tools-dashboard-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tools-dashboard-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.tools-dashboard-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.tools-grid {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 960px; /* Reduced max-width for more side margins */
+    margin: 0 auto;
+    /*
+      This creates a responsive grid of fixed-width cards that are centered.
+      The number of columns will adjust automatically, but the cards themselves
+      will not resize.
+    */
+    grid-template-columns: repeat(auto-fit, 280px); /* Smaller card width */
+    justify-content: center;
+}
+
+
+.tool-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    box-shadow: var(--shadow-sm);
+}
+
+.tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+.tool-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    transition: all 0.2s ease-out;
+}
+
+.tool-card:hover .tool-card-icon {
+    background-color: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.tool-card-content h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+}
+
+.tool-card-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

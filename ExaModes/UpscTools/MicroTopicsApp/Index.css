@@ -1,0 +1,114 @@
+/* MicroTopicsApp/Index.css */
+
+.micro-topics-container h2 {
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.micro-topics-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.micro-topics-children {
+    padding-left: 24px; /* Consistent indentation */
+}
+
+.micro-topics-node-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    gap: 0.75rem;
+}
+
+.micro-topics-node-header:hover {
+    background-color: var(--surface-accent);
+}
+
+.micro-topics-node-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    flex-grow: 1;
+    min-width: 0; /* Allow title to shrink */
+}
+.micro-topics-node-title span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.micro-topics-node-toggle {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+    color: var(--text-tertiary);
+}
+
+.micro-topics-node-toggle.is-open {
+    transform: rotate(90deg);
+}
+
+.micro-topics-node-actions {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.micro-topics-node-header:hover .micro-topics-node-actions {
+    opacity: 1;
+    visibility: visible;
+}
+
+.micro-topics-node-actions .action-button {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+    gap: 0.4rem;
+    white-space: nowrap;
+}
+
+
+/* De-emphasize sub-items for clarity */
+.micro-topics-node .micro-topics-node .micro-topics-node-title {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.micro-topics-node .micro-topics-node .micro-topics-node .micro-topics-node-title {
+    font-size: 0.9rem;
+}
+
+.results-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .micro-topics-node-header {
+        flex-wrap: wrap;
+    }
+    .micro-topics-node-title {
+       width: 100%;
+       margin-bottom: 0.5rem;
+    }
+    .micro-topics-node-actions {
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

@@ -1,0 +1,153 @@
+/* Pyqtapp/Index.css */
+
+/* === CONFIGURATION SCREEN === */
+.pyq-config-container {
+    text-align: center;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.pyq-config-container h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.pyq-config-container .subtitle {
+    margin-bottom: 2.5rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.pyq-config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.pyq-config-form .form-group {
+    text-align: left;
+}
+
+.pyq-config-form .action-button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* === RESULTS REPORT SCREEN === */
+.pyq-report-container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem 2rem;
+}
+
+.pyq-report-container > h2 {
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.report-section {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.report-section > h3 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.report-subsection {
+    margin-bottom: 2.5rem;
+}
+.report-subsection:last-child {
+    margin-bottom: 0;
+}
+
+.report-subsection h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.report-subsection p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.report-subsection ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.report-subsection ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+}
+
+.report-subsection ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Keyword-style list */
+.keyword-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.keyword-list li {
+    padding: 0.4rem 1rem;
+    background-color: var(--surface-accent);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.keyword-list li::before {
+    content: none;
+}
+
+.framework-box {
+    background-color: var(--surface-accent);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.results-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}

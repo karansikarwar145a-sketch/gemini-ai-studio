@@ -1,0 +1,149 @@
+/* EssayApp/Index.css */
+
+/* === CONFIGURATION SCREEN === */
+.pyq-config-container {
+    text-align: center;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.pyq-config-container h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.pyq-config-container .subtitle {
+    margin-bottom: 2.5rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.pyq-config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.pyq-config-form .form-group {
+    text-align: left;
+}
+
+.pyq-config-form .action-button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* === RESULTS REPORT SCREEN === */
+.pyq-report-container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem 2rem;
+}
+
+.pyq-report-container > h2 {
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Accordion Styling */
+.pyq-report-container .accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.pyq-report-container .accordion-item {
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+    background-color: var(--surface);
+}
+.pyq-report-container .accordion-item:has(.accordion-header[aria-expanded="true"]) {
+    box-shadow: var(--shadow-md);
+}
+.pyq-report-container .accordion-header {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+    transition: background-color 0.2s ease;
+}
+.pyq-report-container .accordion-header:hover {
+    background-color: var(--surface-accent);
+}
+.pyq-report-container .accordion-item:has(.accordion-header[aria-expanded="true"]) .accordion-header {
+    border-bottom: 1px solid var(--border);
+}
+
+.pyq-report-container .accordion-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.pyq-report-container .accordion-icon {
+    color: var(--text-secondary);
+    transition: transform 0.2s ease;
+}
+.pyq-report-container .accordion-header[aria-expanded="true"] .accordion-icon { 
+    transform: rotate(180deg); 
+}
+
+.report-subsection h4 {
+    margin-top: 0;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.detail-category h5 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.detail-category ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.detail-category li {
+    position: relative;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+}
+.detail-category li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+.results-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}

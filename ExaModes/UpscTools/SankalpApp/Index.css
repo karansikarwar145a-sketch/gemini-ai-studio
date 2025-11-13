@@ -1,0 +1,127 @@
+/* SankalpApp/Index.css */
+
+.sankalp-config-container .subtitle {
+    text-align: center;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sankalp-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.sankalp-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sankalp-form .form-group label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.sankalp-form .form-group input,
+.sankalp-form .form-group textarea {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-color: var(--surface-accent);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    transition: all 0.2s ease;
+}
+
+.sankalp-form .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.sankalp-form .form-group input:focus,
+.sankalp-form .form-group textarea:focus {
+    background-color: var(--surface);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-soft);
+    outline: none;
+}
+
+.sankalp-form .large-btn {
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    .sankalp-form {
+        grid-template-columns: 1fr 1fr;
+    }
+    .sankalp-form .span-2 {
+        grid-column: span 2;
+    }
+}
+
+/* Results View */
+.sankalp-results-container h2 {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.sankalp-plan-content {
+    background-color: var(--surface-accent);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border);
+}
+
+.sankalp-plan-content.markdown-content {
+    max-width: 100%;
+}
+
+.sankalp-plan-content.markdown-content h2,
+.sankalp-plan-content.markdown-content h3 {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    color: var(--primary);
+}
+.sankalp-plan-content.markdown-content h2:first-child,
+.sankalp-plan-content.markdown-content h3:first-child {
+    margin-top: 0;
+}
+
+.results-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* === MOBILE-SPECIFIC TABLE SCROLLING === */
+@media (max-width: 768px) {
+    .sankalp-plan-content {
+        padding: 1rem;
+    }
+    
+    /* The .markdown-content table styles in index.css are sufficient, but this ensures overflow behavior */
+    .sankalp-plan-content.markdown-content table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    .sankalp-plan-content.markdown-content th,
+    .sankalp-plan-content.markdown-content td {
+        white-space: normal;
+    }
+}

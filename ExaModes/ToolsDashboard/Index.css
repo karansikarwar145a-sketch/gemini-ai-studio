@@ -1,0 +1,233 @@
+/* ExaModes/ToolsDashboard/Index.css */
+
+.tools-dashboard-container {
+    padding: 2rem 1.5rem;
+    animation: fade-in-up 0.5s ease-out;
+}
+
+.tools-dashboard-header {
+    text-align: center;
+    margin-bottom: 2rem; /* Reduced margin to make space for search */
+}
+
+.tools-dashboard-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.tools-dashboard-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* === New Search Bar Styles === */
+.search-bar-wrapper {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--surface);
+    border: 1px solid #C8C2BC; /* Darker border, shadow removed */
+    border-radius: 50px; /* Pill shape */
+    padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.search-bar-container:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-soft); /* Drop shadow removed, ring is slightly thinner */
+}
+
+.search-bar-container svg {
+    color: var(--text-tertiary);
+    flex-shrink: 0;
+}
+
+.search-bar-container input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--text-primary);
+    outline: none;
+}
+.search-bar-container input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.no-results-container {
+    text-align: center;
+    padding: 4rem 1rem;
+    color: var(--text-secondary);
+}
+.no-results-container p {
+    font-size: 1.1rem;
+}
+
+
+.tool-section {
+    max-width: 1200px;
+    margin: 0 auto 3.5rem;
+}
+
+.tool-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.app-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center; /* Centered for better last-row alignment */
+}
+
+.app-card {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    padding: 0.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    width: 120px;
+    height: 120px;
+}
+
+.app-card:hover {
+    background-color: var(--surface-accent);
+    border-color: var(--border);
+    transform: translateY(-2px);
+}
+
+.app-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px; /* Squircle shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface);
+    color: var(--primary);
+    transition: all 0.2s ease-out;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+}
+
+.app-card:hover .app-card-icon {
+    background-color: var(--primary);
+    color: white;
+    transform: scale(1.05);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
+
+.app-card-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.3;
+    width: 100%;
+    /* Handle long names with ellipsis */
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.app-card:hover .app-card-name {
+    color: var(--text-primary);
+}
+
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === Mobile Enhancements === */
+@media (max-width: 768px) {
+    .tools-dashboard-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .tools-dashboard-header {
+        margin-bottom: 2rem;
+    }
+
+    .tools-dashboard-header h1 {
+        font-size: 2rem;
+    }
+
+    .tools-dashboard-header p {
+        font-size: 1rem;
+    }
+
+    .search-bar-wrapper {
+        margin-bottom: 2.5rem;
+    }
+
+    .tool-section {
+        margin-bottom: 2.5rem;
+    }
+    
+    .tool-section-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .app-grid {
+        display: grid;
+        /* Create a fluid grid with columns at least 90px wide */
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 0.75rem; /* Tighter gap */
+    }
+
+    .app-card {
+        width: auto; /* Let grid control the width */
+        height: 110px; /* Slightly shorter */
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+
+    .app-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+    }
+
+    /* Adjust icon size within the smaller card */
+    .app-card-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .app-card-name {
+        font-size: 0.75rem; /* Slightly smaller font */
+    }
+}

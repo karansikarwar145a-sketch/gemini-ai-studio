@@ -1,0 +1,8 @@
+{
+  "name": "Copy of Copy of new bbz",
+  "description": "An AI-powered mind mapping tool to visually organize and expand on your ideas, with persistent storage and a sleek UI.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ]
+}
