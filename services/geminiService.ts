@@ -44,7 +44,7 @@ export async function* generateResponse(
   location?: { latitude: number; longitude: number; },
   modelOverride?: string
 ): AsyncGenerator<MessageContent, void, undefined> {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY as string });
   const modelInfo = MODES[mode];
   const modelToUse = modelOverride || modelInfo.model || 'gemini-2.5-flash';
   
@@ -189,7 +189,7 @@ export async function* generateResponse(
 
 // FIX: Use 'Operation' type instead of 'any' for better type safety.
 async function pollVideoOperation(operation: Operation): Promise<string> {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY as string });
     let currentOp = operation;
     while (!currentOp.done) {
         await new Promise(resolve => setTimeout(resolve, 10000));
@@ -198,13 +198,13 @@ async function pollVideoOperation(operation: Operation): Promise<string> {
     const downloadLink = currentOp.response?.generatedVideos?.[0]?.video?.uri;
     if (!downloadLink) throw new Error("Video generation failed to produce a download link.");
 
-    const response = await fetch(`${downloadLink}&key=${process.env.API_KEY}`);
+    const response = await fetch(`${downloadLink}&key=${import.meta.env.VITE_API_KEY}`);
     const blob = await response.blob();
     return URL.createObjectURL(blob);
 }
 
 export const generateVideoFromText = async (prompt: string, aspectRatio: '16:9' | '9:16'): Promise<string> => {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY as string });
     const operation = await ai.models.generateVideos({
         model: 'veo-3.1-fast-generate-preview',
         prompt,
@@ -214,7 +214,7 @@ export const generateVideoFromText = async (prompt: string, aspectRatio: '16:9' 
 };
 
 export const generateVideoFromImage = async (imageFile: File, aspectRatio: '16:9' | '9:16', prompt?: string): Promise<string> => {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY as string });
     const imagePart = await fileToGenerativePart(imageFile);
     const operation = await ai.models.generateVideos({
         model: 'veo-3.1-fast-generate-preview',
@@ -227,7 +227,7 @@ export const generateVideoFromImage = async (imageFile: File, aspectRatio: '16:9
 
 
 export const getTextToSpeech = async (text: string): Promise<string> => {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY as string });
     const response = await ai.models.generateContent({
         model: 'gemini-2.5-flash-preview-tts',
         contents: [{ parts: [{ text }] }],
