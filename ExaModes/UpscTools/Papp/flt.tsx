@@ -52,7 +52,7 @@ export const FLTApp: React.FC<FLTAppProps> = ({ onTestComplete }) => {
 
     useEffect(() => {
         try {
-            aiRef.current = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            aiRef.current = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
         } catch (e) {
             console.error("Failed to initialize GoogleGenAI", e);
             setError("Could not initialize AI. Please check your API key setup.");

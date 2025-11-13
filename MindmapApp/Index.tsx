@@ -241,7 +241,7 @@ export const MindmapApp: React.FC = () => {
     }, [history, historyIndex]);
 
     useEffect(() => {
-        try { aiRef.current = new GoogleGenAI({ apiKey: process.env.API_KEY }); } 
+        try { aiRef.current = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY }); } 
         catch (e) { console.error(e); setError("Could not initialize AI service."); }
     }, []);
 
